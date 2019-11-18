@@ -39,3 +39,9 @@ remote:
 6) git commit 
 7) git push heroku master
 8) heroku open
+
+### 4. 진행사항
+접속했을때, Application Error 발생
+
+### References
+https://hyesun03.github.io/2016/10/10/heroku/
