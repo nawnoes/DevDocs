@@ -1,11 +1,11 @@
 ### 1. 도커란
 ***
-![docker1](https://ho1234c.github.io/images/2017-01-31-docker-nodejs/2.png)
+![docker1](https://ho1234c.github.io/images/2017-01-31-docker-nodejs/2.png)  
 컨테이너 가상화 플랫폼. 기존에는 호스트 OS 위에 게스트 OS를 설치해서 동작 했다면, 도커는 이와 다르게 게스트 OS를 설치하지 않는다. 도커 엔진 위에 시스템 운영에 필요한 최소한의 라이브러리들만 설치하고, 시스템 자원은 호스트OS와 공유. OS는 설치하는것이 아닌, 시스템 파일만 격리시키고, 실행은 호스트OS에 시켜서 속도가 빠르다
 
 ### 이미지와 컨테이너
 ***
-![docker2](https://ho1234c.github.io/images/2017-01-31-docker-nodejs/3.png)
+![docker2](https://ho1234c.github.io/images/2017-01-31-docker-nodejs/3.png)  
 도커에는 이미지를 통해서 컨테이너를 만든다. 이미지만 있다면, 컨테이너를 원하는만큼 만들 수 있다. 도커는 레이어를 겹쳐서 만들어서, 컨테이너 이미지를 겹치는 방식으로 동작. 하나의 이미지에서 파생된 여러가지 이미지를 만들수도 있다. 
 
 ### Docker-compose
