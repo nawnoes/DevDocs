@@ -11,6 +11,11 @@
 ### 3. Docker-compose
 ***
 도커 서버 구축 시, 한 컨테이너에 필요한 소프트웨어를 한꺼번에 설치할 수도 있고 각각 컨테이너를 만들어서 연결할 수도 있다. 각각의 컨테이너를 띄우고 설정하는 스크립트를 매번 실행하기 번거롭기 때문에 여러 컨테이너를 한번에 띄울 수 있게하는 docker-compose를 사용한다.
+
+docker-compose는 컨테이너를 stack-service-task라는 세가지  계층으로 구분해서 관리한다.  
+_stack_ : 하나의 앱 (facebook, youtube처럼 큰 단위)
+_service_ : 앱을 구성하는 하나의 역할 (nodejs, mongodb, nginx 서버등 앱을 작동하기 위한 구성요소)
+_task_: serviece를 이루는 컨테이너들
 > 컨테이너 안의 데이터는 영속성이 없기 때문에 컨테이너를 지우면 사라진다. 따라서 영속성을 가지는 데이터를 저장하는 용도로는 적합하지 않다.
 
 #### 3.1 docke-compose 사용
@@ -39,6 +44,7 @@ _image_: 해당 container가 어떤 image를 기반으로 실행되는지 지정
 _ports_: container와 host 간의 공유할 포트를 지정. docker compose로 container를 실행한 다음 localhost를 입력하면 nginx 기본 페이지가 보인다. 
 _volumes_: container와 host간의 공유할 디렉토리를 지정한다. 
 
+> 포트로 사용할 수 있는 값은 TCP나 UDP에서 0번 부터 65535 
 #### 3.2 docker-compose로 실행 및 정지 명령어
 ```
 docker-compose up   //shell에서 실행
