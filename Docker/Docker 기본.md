@@ -58,3 +58,6 @@ docker-compose down // 정지
 https://ho1234c.github.io/2017/01/31/2017-01-31-docker-nodejs/index.html
 - Docker-compose 소개
 https://medium.com/sjk5766/docker-compose-%EC%86%8C%EA%B0%9C-f84840ff7203
+
+- Docker 공식문서 에서 제시하는 개발-배포 Flow 따라가기 (Docker Swarm 사용하기)
+http://jaynewho.com/post/21
