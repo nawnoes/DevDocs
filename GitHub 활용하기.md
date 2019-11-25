@@ -9,6 +9,15 @@
 - git clone
 - git status
 
+### git VSCode에서 계정명 변경하기
+***
+vscode로 git에 등록하다보니 시스템 이름으로 올라가는 현상으로
+계정 변경
+
+```
+git config --global user.name "이름" 
+git config --global user.email "이메일"
+```
 
 ### References
 https://sujinlee.me/professional-github/
