@@ -68,8 +68,39 @@ _dockerfile_에는 개발용 도커 이미지를 빌드하는데 사용할 docke
 docker-compose up   //shell에서 실행
 docker-compose up -d //데몬으로 실행
 docker-compose down // 정지
+docker-compose ps // 현재 환경에서 실행 중인 각 서비스 상태
+docker-compose stop  //서비스를 멈춤
+docker-compose start //서비스를 시작
+docker-compose down --volume // 서비스를 지운다. 컨테이너와 네트워크를 삭제하며, 옵션에 따라 볼륨도 지운다.
+docker-compose exec [명령어] // 실행 중인 컨테이너에서 명령어를 실행한다.
+docker-compose logs [서비스명] // 서비스 이름에 대한 로그 확인. 안적으면 컴포즈가 관리하는 모든 로그
 ```
 > docker로 실제 환경을 구성하려면 많은 옵션들이 포함된다. 
+
+#### 3.3 도커 컴포즈 단축 명령 등록하기
+***
+도커 컴포즈 도입후 명령어 자체가 길어서 오히려 귀찮을때,
+~/.bashrc나 ~/.zshrc에 아래 내용을 추가
+
+```
+alias dco='docker-compose'
+alias dcb='docker-compose build'
+alias dce='docker-compose exec'
+alias dcps='docker-compose ps'
+alias dcr='docker-compose run'
+alias dcup='docker-compose up'
+alias dcdn='docker-compose down'
+alias dcl='docker-compose logs'
+alias dclf='docker-compose logs -f'
+
+```
+
+#### 3.4 도커 컴포즈 팁
+***
+##### 3.4.1 docker-compose.yml 수정시
+수정하게 되면 stop -> 삭제(rm) -> 시작 (up) 해야 하지만
+up 명령어만 실행해도 __알아서 컨테이너를 재생성하고 서비스 재시작__  
+> 컨테이너가 재생성 되지 않는거 같을 때 __--force-recreate__ 옵션을 사용
 
 ### References
 - Docker로 nodejs 서버 배포하기
