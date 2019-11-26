@@ -20,7 +20,11 @@ _task_: serviece를 이루는 컨테이너들
 
 #### 3.1 docke-compose 사용
 여러 컨테이너를 한번에 실행할 수 있는 docker-compose에 대해 소개.
-docker-compose는 기본적으로 docker-compose.yml 파일을 기반으로 실행된다. 
+docker-compose는 기본적으로 docker-compose.yml 파일을 기반으로 실행된다.  
+  
+도커 출시후 pig라는 독립된 개발 환경을 빠르게 구성할 수 있는 프로젝트가 나옴. 그 후 인기를 얻자 도커에서 피그 프로젝트를 흡수하여, 도커 컴포즈라는 이름의 도구로 만든다.  
+  
+도커 컴포즈를 사용하면, 컨테이너 실행에 필요한 옵션을 docker-compose.yml에 적어둘 수 있고, 컨테이너 간 실행 순서나, 의존성도 관리 할 수 있다.
 
 ```
 version: '3'
@@ -37,13 +41,27 @@ services:
    - ./source:/source
 ```
 ![dc1](https://miro.medium.com/max/1828/1*JCbYpCF4U-fF08Ef3l2o3g.png)
-_version_: compose 파일의 버전을 의미. 버전 3이 최신 버전
-_services_: services부터 실제 container 설정을 명시
+_version_: compose 파일의 버전을 의미. 버전 3이 최신 버전  
+_services_: services부터 실제 container 설정을 명시. 컴포즈에서는 컨테이너 대신 서비스 개념을 사용.  
 _nginx_: 사용자가 지정하는 이름. 다른 이름으로 변경해도 상관 없음.
 _image_: 해당 container가 어떤 image를 기반으로 실행되는지 지정. 
 _ports_: container와 host 간의 공유할 포트를 지정. docker compose로 container를 실행한 다음 localhost를 입력하면 nginx 기본 페이지가 보인다. 
-_volumes_: container와 host간의 공유할 디렉토리를 지정한다. 
+_volumes_: container와 host간의 공유할 디렉토리를 지정한다.   
+_environment_: docker run 명령어의 -e 옵션에 적어던 내용들. 
 
+```
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile-dev
+
+```
+db 서비스와 달리 앱 서비스는 특정 이미지 대신 build 옵션을 추가한다.
+_context_는 docker build 명령을 실행할 디렉터리 경로.  
+_dockerfile_에는 개발용 도커 이미지를 빌드하는데 사용할 dockerfile을 지정하면 된다.
+
+> version 3d의 경우 --link 옵션을 주지 않아도 한 네트워크 안에 있는 서비스끼리 서로 통신할 수 있다. 
 > 포트로 사용할 수 있는 값은 TCP나 UDP에서 0번 부터 65535 
 #### 3.2 docker-compose로 실행 및 정지 명령어
 ```
@@ -62,3 +80,4 @@ https://medium.com/sjk5766/docker-compose-%EC%86%8C%EA%B0%9C-f84840ff7203
 - Docker 공식문서 에서 제시하는 개발-배포 Flow 따라가기 (Docker Swarm 사용하기)
 http://jaynewho.com/post/21
 
+https://www.44bits.io/ko/post/almost-perfect-development-environment-with-docker-and-docker-compose
