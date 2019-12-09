@@ -16,7 +16,44 @@ fetch('MY_API_URL', {
 ```
 
 ### 2. multer
+***
+파일 업로드를 위해 사용되는, multpart/form-data를 다루기 위한 node.js의 미들웨어. 효율성을 최대로 하기 위해 busboy를 기반으로 한다.
+
+> Multer는 multipart(multipart/form-data)가 아닌 폼에서는 동작하지 않는다.  
+
+
 - 폼 데이터나 폼 태그를 통해 업로드한 이미지를 올리면 req.file에 정보가 들어오고, dest 속성에 지정해둔 경로에 이미지가 저장
+
+#### 2.1 사용법
+```js
+ar express = require('express')
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+
+var app = express()
+
+app.post('/profile', upload.single('avatar'), function (req, res, next) {
+  // req.file 은 `avatar` 라는 필드의 파일 정보입니다.
+  // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것입니다.
+})
+
+app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
+  // req.files 는 `photos` 라는 파일정보를 배열로 가지고 있습니다.
+  // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것입니다.
+})
+
+var cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
+app.post('/cool-profile', cpUpload, function (req, res, next) {
+  // req.files는 (String -> Array) 형태의 객체 입니다.
+  // 필드명은 객체의 key에, 파일 정보는 배열로 value에 저장됩니다.
+  //
+  // e.g.
+  //  req.files['avatar'][0] -> File
+  //  req.files['gallery'] -> Array
+  //
+  // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것입니다.
+})
+```
 
 ### 3. FormData
 보통은 ajax 전송시 폼 전송을 할일은 거의없음. 하지만 이미지 업로드시 폼 전송을 사용한다.  
