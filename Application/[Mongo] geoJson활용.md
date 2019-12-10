@@ -3,7 +3,7 @@
 nodejs + mongoose 조합으로 좌표 기반으로 특정 데이터들을 반환하는 경우 geoJson 활용 가능.
 
 #### 1. geoJson이란?
-: 위치정보를 갖는 점을 기반으로 체계적으로 지형을 표현하기 위해 설계된 json 포맷.
+: json 형태로 만든 위치 정보. 
 
 #### 2. 사용방법
 : mongoose 에서 schema 작성 예시  
@@ -23,7 +23,7 @@ const geoSchema = new Schema(
     }
 });
 
-geoSchema.index({ location: "2dsphere" });
+geoSchema.index({ location: "2dsphere" }); // location 기준으로 2dsphere(구면을 2d로 표현)
 
 module.exports = mongoose.model('geoSchema', geoSchema);
 ```
@@ -66,3 +66,4 @@ geoSchema.find({
 
 ### References
 - https://medium.com/@dltkdals2202/mongodb%EC%97%90%EC%84%9C-geojson%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B0%98%EA%B2%BD%EA%B3%84%EC%82%B0-179d4f0dcf9
+- https://g6ling.github.io/2016/09/17/mongoose-geo-ko/
