@@ -7,7 +7,10 @@ NAT와 방화벽 뒤에 있는 로컬서버를 안전한 터널을 통해 공개
 ```bash
 $ npm i -g ngrok
 ``` 
-
+맥에서 사용시 위 명령어가 동작하지 않아, 아래 명령어로 해결.
+```bash
+$ brew cask install ngrok
+```
 ## 2. 사용
 ngrok http [PORT 번호] 명령을 통해 사용.
 ```
