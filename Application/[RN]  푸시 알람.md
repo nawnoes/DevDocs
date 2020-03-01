@@ -27,8 +27,13 @@ App     Server     Admin     Push Server
     10) Push Server에서 Server에 푸시 결과 저장 API 호출
     11) Server에서 푸쉬 결과 DB 저장
     12) Admin에서 푸쉬 결과 확인 및 '재'발송
+## 1.2 express 서버 처리 절차
+   (1) 로컬서버를 인터넷에 노출시켜주는 ngrok을 설치
+   > npm i -g ngrok
+   (2) express 서버, es6문법을 사용하기 위한 **esm**모듈, push 알람을 사용하기 위한 **expo-server-sdk**를 설치해준다.
+   > npm install express esm expo-server-sdk --save
 
-## 1.2 Push Token 생성
+## 1.3 Push Token 생성
 > 푸시토큰은 Application 단위로 생성
 > Application을 삭제 후 재설치하게 되면 푸시토큰이 변경
 > Expo 푸쉬는 디바이스에서만 수신
