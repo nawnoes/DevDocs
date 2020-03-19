@@ -67,4 +67,6 @@ expo build:android
 위 내용 중 유효하지 않는 내용이 있다면 build 실패
 
 # Reference
-https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%EC%9C%BC%EB%A1%9C-%EC%95%B1%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-d1c9af5c8802
+- https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%EC%9C%BC%EB%A1%9C-%EC%95%B1%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-d1c9af5c8802
+
+- https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%B0%ED%8F%AC-2-ios-android-%EB%B3%84%EB%A1%9C-%ED%95%84%EC%9A%94%ED%95%9C-%EC%9D%B8%EC%A6%9D-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0-d917f31d8d9f
