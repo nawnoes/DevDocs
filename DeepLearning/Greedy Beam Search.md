@@ -18,8 +18,5 @@
 - 하위 노드에서 상위 노드로 결합해 나가는 방식
 
 
-
-### Top-Down Beam Search
-tkddnl 
 # References 
 https://ratsgo.github.io/deep%20learning/2017/06/26/beamsearch/
