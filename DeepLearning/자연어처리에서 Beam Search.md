@@ -11,10 +11,71 @@
 
 # 1. Greedy Seaerch Decoder
 greedy search는 각 출력을 예측하는데 각 스텝에서 가장 가능성이 높은 단어를 선택한다. 
-## 장점
+**장점**  
 탐색하는데 매우 빠르다.
-## 단점
+**단점**  
 최종 출력이 최적화된 결과에서 멀어진다.
+  
+## 예제
+10개의 단어 시퀀스롤 포함하는 예측문제. 각단어는 다섯 단어의 어휘에 대한 확률 분포를 예측한다
+
+**데이터**  
+```python
+# define a sequence of 10 words over a vocab of 5 words
+data = [[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1]]
+data = array(data)
+```
+각 단어들은 정수로 vocab에서 검색 가능하고, 따라서 디코딩 작업은 확률에서 정수 시퀀스를 선택하는 것이 된다.
+`argmax()`는 배열에서 최대값을 갖는 인덱스를 반환해주고 numpy 배열에서 사용 가능하다.  
+> greedy_decoder()는 `argmax()` 함수를 이용한다
+
+**Greedy Decoder**  
+```python
+# 그리디 디코더
+def greedy_decoder(data):
+    # 각 데이터에서 가장 큰 값을 가지는 인덱스들의 배열을 반환
+	return [argmax(s) for s in data]
+```
+
+**전체 코드**
+```python
+from numpy import array
+from numpy import argmax
+
+# greedy decoder
+def greedy_decoder(data):
+	# index for largest probability each row
+	return [argmax(s) for s in data]
+
+# define a sequence of 10 words over a vocab of 5 words
+data = [[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1],
+		[0.1, 0.2, 0.3, 0.4, 0.5],
+		[0.5, 0.4, 0.3, 0.2, 0.1]]
+data = array(data)
+# decode sequence
+result = greedy_decoder(data)
+print(result)
+```
+**출력**
+> [4, 0, 4, 0, 4, 0, 4, 0, 4, 0]
+
+
 
 # References
 https://machinelearningmastery.com/beam-search-decoder-natural-language-processing/
