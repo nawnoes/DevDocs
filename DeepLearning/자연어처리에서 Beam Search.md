@@ -1,5 +1,5 @@
 # 자연어처리에서 Beam Search
-텍스트 생성 문제에 대해서 **Greedy Searcg**와 **Beam Search**을 어떻게 사용하는지 
+텍스트 생성 문제에 대해서 **Greedy Searcg**와 **Beam Search**을 어떻게 사용하는지 [How to Implement a Beam Search Decoder for Natural Language Processing](https://machinelearningmastery.com/beam-search-decoder-natural-language-processing/)블로그를 보고 정리
 
 # 텍스트 생성을 위한 Decoder
 캡션 생성, 요약, 기계 번역은 단어들의 연속을 예측한다. 이런 모델들의 출력은 각 단어들에 대해 사전크기의 확률 분포이다. 이 사전 크기의 확률 분포들은 문장속의 단어로 변환된다.  
@@ -92,7 +92,88 @@ Beam Search Strategies for Neural Machine Translation, 2017
 주어진 확률 시퀀스와 빔 크기 $k$에 대해 빔 탐색을 수행하는 함수를 작성한다.
 - 각 후보 시퀀스는 가능한한 모든 다음 스텝들에 대해 확장된다.
 - 각 후보는 확률을 곱함으로써 점수가 매겨진다.
-- $k$ 시퀀스
+- 가장 확률이 높은 $k$ 시퀀스가 선택되고, 다른 모든 후보들은 제거된다.
+- 위 절차들을 시퀀스가 끝날때까지 반복한다.
+  
+확률을 숫자가 작은데, 작은 숫자끼리 곱하게 되면 매우 작은 숫자가 나오게 되어 `언더플로우`가 발생한다. 따라서 확률값에 자연로그 값을 취한 후에 곱해준다. 이런 방법은 숫자를 크고 다루기 편하게 유지해준다. 게다가 이 과정은 점수를 최소화 하면서 탐색을 수행한다. 확률의 네거티브 로그가 곱해지고, 이 마지막 수정은 우리가 모든 후보들에 대해 점수에 대해 오름차순으로 분류할 수 있다는 것을 의미하고 그리고 처음 $k$를 가장 높은 확률의 후보자로 선택할 수 있다.
 
+### 2.2 beam_search_decoder 함수
+```python
+# beam search
+def beam_search_decoder(data, k):
+	sequences = [[list(), 1.0]] # 빈리스트와 점수 1.0으로 초기화
+	
+	# data에 대해서 반복
+	for row in data:
+		all_candidates = list()
+		
+		#sequences만큼 순회
+		#최초에는 길이 1
+		for i in range(len(sequences)):
+			seq, score = sequences[i]
+			for j in range(len(row)): # data의 한 row 만큼 순회
+				candidate = [seq + [j], score * -log(row[j])] # [순서, 1.0 * -log(row의 j번째 요소)] 
+				all_candidates.append(candidate) # 계산된 후보를 list에 삽입
+		# 후보들을 점수에 따라 정렬
+		ordered = sorted(all_candidates, key=lambda tup:tup[1])
+		# 그중에 k개를 반환
+		sequences = ordered[:k]
+	return sequences
+```
+
+### 2.3 beam_search_decoder 전체
+```python
+"""
+source by https://machinelearningmastery.com/beam-search-decoder-natural-language-processing/
+"""
+
+from math import log
+from numpy import array
+from numpy import argmax
+
+
+# beam search
+def beam_search_decoder(data, k):
+  sequences = [[list(), 1.0]]
+  # walk over each step in sequence
+  for row in data:
+    all_candidates = list()
+    # expand each current candidate
+    for i in range(len(sequences)):
+      seq, score = sequences[i]
+      for j in range(len(row)):
+        candidate = [seq + [j], score * -log(row[j])]
+        all_candidates.append(candidate)
+    # order all candidates by score
+    ordered = sorted(all_candidates, key=lambda tup: tup[1])
+    # select k best
+    sequences = ordered[:k]
+  return sequences
+
+
+# define a sequence of 10 words over a vocab of 5 words
+data = [[0.1, 0.2, 0.3, 0.4, 0.5],
+        [0.5, 0.4, 0.3, 0.2, 0.1],
+        [0.1, 0.2, 0.3, 0.4, 0.5],
+        [0.5, 0.4, 0.3, 0.2, 0.1],
+        [0.1, 0.2, 0.3, 0.4, 0.5],
+        [0.5, 0.4, 0.3, 0.2, 0.1],
+        [0.1, 0.2, 0.3, 0.4, 0.5],
+        [0.5, 0.4, 0.3, 0.2, 0.1],
+        [0.1, 0.2, 0.3, 0.4, 0.5],
+        [0.5, 0.4, 0.3, 0.2, 0.1]]
+data = array(data)
+# decode sequence
+result = beam_search_decoder(data, 3)
+# print result
+for seq in result:
+  print(seq)
+```
+**결과**
+```sh
+[[4, 0, 4, 0, 4, 0, 4, 0, 4, 0], 0.025600863289563108]
+[[4, 0, 4, 0, 4, 0, 4, 0, 4, 1], 0.03384250043584397]
+[[4, 0, 4, 0, 4, 0, 4, 0, 3, 0], 0.03384250043584397]
+```
 # References
 https://machinelearningmastery.com/beam-search-decoder-natural-language-processing/
