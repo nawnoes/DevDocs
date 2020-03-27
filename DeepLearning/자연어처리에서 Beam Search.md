@@ -9,7 +9,7 @@
   
 단어들의 후보 시퀀스들은 그들의 우도(likelihood)에 따라 점수화 되고, 다음 텍스트를 예측하는 것에 **Greedy Search**와 **Beam Search**을 일반적으로 사용한다.
 
-# 1. Greedy Seaerch Decoder
+## 1. Greedy Seaerch Decoder
 greedy search는 각 출력을 예측하는데 각 스텝에서 가장 가능성이 높은 단어를 선택한다. 
 **장점**  
 탐색하는데 매우 빠르다.
@@ -75,7 +75,7 @@ print(result)
 **출력**
 > [4, 0, 4, 0, 4, 0, 4, 0, 4, 0]
 
-# 2. Beam Seaerch Decoder
+## 2. Beam Seaerch Decoder
 그리디 탐색에서 확장된 빔 탐색이 많이 사용한다. 이것은 가장 높은 확률을 시퀀스를 반환한다. 
   
 빔 탐색은 모든 가능한 다음 스텝들로 확장하고, $k$가 사용자 지정 파라미터 이고, 빔의 숫자 또는  확률 시퀀스에서 병렬 탐색들을 조절가능한 곳에서 가능한 $k$를 유지하려고 한다.  
@@ -85,8 +85,14 @@ print(result)
 > NMT에서 빔 탐색 디코더를 통해 문장을 번역하는것은 학습된 NMT 모델의 조건부 확률의 최대화하는 번역을 찾는것이다. 빔 탐색전략은 고정됨 숫자를 유지하면서 왼쪽->오른쪽으로 이동하면서 단어를 생성한다. 빔 크기를 증가시면 번역 성능은 높아지나 디코딩 속도는 떨어진다.  
   
 Beam Search Strategies for Neural Machine Translation, 2017
+  
+탐색 절차는 각 후보 단어들에 대해서 최대 길이에 도달할때 EOS 토큰에 도달하거나 임계값 우도에 도달할때 탐색을 개별적으로 멈출 수 있다. 
 
-
+### 2.1 구현
+주어진 확률 시퀀스와 빔 크기 $k$에 대해 빔 탐색을 수행하는 함수를 작성한다.
+- 각 후보 시퀀스는 가능한한 모든 다음 스텝들에 대해 확장된다.
+- 각 후보는 확률을 곱함으로써 점수가 매겨진다.
+- $k$ 시퀀스
 
 # References
 https://machinelearningmastery.com/beam-search-decoder-natural-language-processing/
