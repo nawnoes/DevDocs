@@ -1,4 +1,9 @@
 # S3와 lambda를 이용해 리사이징 서버 만들기
+
+나의 경우 [[AWS] CloudFront Lambda@edge 를 이용한 이미지 리사이징](https://devhaks.github.io/2019/08/25/aws-lambda-image-resizing/#7-Lambda-edge-%ED%95%A8%EC%88%98%EC%97%90-Lambda-%ED%95%A8%EC%88%98-%EB%B0%B0%ED%8F%AC) 블로그를 보고 lambda resizing 서비스를 완성. 여러가지 블로그 글이 있었지만 2020-03월에 적용하기에 가장 적합했다.   
+> exif등의 메타정보를 유지하기 위해서는 위 블로그 내용에 추가로 sharp 부분을 수정해줘야 한다.
+
+
 이미지를 원본과 썸네일을 한번에 저장하게 되면, 저장소 용량을 많이 사용하게 된다. lambda와 cloudfront,  lambda@edge를 이용해 리사이징 서버 
 
 ## 1. 설정
