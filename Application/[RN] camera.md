@@ -1,9 +1,13 @@
-# Camera
+# React Native Expo Camera 사용.
 ***
+## 기본 카메라 설정
+`화이트밸런스`, `줌`, 
+
 ## VSCO 와 같이 필터 적용하기
 페이스북 Jin Ho So님, RECG 앱?
 - 구성은 Web-gl과 pixi.js 이용
 - 사용 방법: hhtp://github.com/expo/expo-pixi
+- 
 ## 무음 문제
 -  ios has the prop captureAudio as false as default. If you want to capture audio, pass true
 read the doc https://github.com/react-native-community/react-native-camera/blob/master/docs/RNCamera.md
