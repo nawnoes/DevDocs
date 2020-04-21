@@ -50,5 +50,46 @@ Angular LSH는 기존 LSH의 변형의 일종이다. 포인트들은 이미 정�
 아래 그림의 경우 두 포인트가 충분히 가까운 경우 같은 버켓에 들어가는 것을 볼수 있다. **우측의 주황색 해시 값이 보라색과 같이 021로 나와야 하는데 321로 나오는것은 그림이 잘 못된 부분 같다**
 ![](https://miro.medium.com/max/1052/1*aArg6a26KqbIlEkT43fxlw.gif)
 
+
+# Reference
+[Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
+
+# 3. LSH Attention
+![](https://miro.medium.com/max/1052/1*aArg6a26KqbIlEkT43fxlw.gif)
+
+## 1. LSH 어텐션의 절차  
+- Q와 K 매트릭스의 LSH 해시를 찾는다
+- 같은 LSH를 거쳐서 같은 버켓 안에 있는 $k$와 $q$에 대해서 아래 어텐션을 계산한다.
+![](https://miro.medium.com/max/1400/1*EphJAS1hwU9NNmUQMxv92w.png)
+## 2.Multi-round LSH attenstion 
+충분히 가까운 항목들이 다른 버켓에 빠지지 않도록, LSH를 여러번 반복한다.
+
+## 3. LSH Attention 전체 과정
+![](https://miro.medium.com/max/1400/1*cW8irlZJytFfDkSQCPXQxA.gif)
+
+1. LSH로 query, key들에 대해 버켓팅
+2. 버켓에 따라 정렬
+3. 청크 단위로 분리
+4. 같은 버켓 안에 있는 자기 자신과 이전 요소들에 대해서 attention
+
+# Reference
+[Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
+
+# 4. Reversible Transformer
+> [Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)를 보며 정리.  
+## RevNet, Reversible residual Network 
+트랜스포머에서 인코더와 디코더 레이어를 여러개를 쌓을 때,  `Residual Network`에서 역전파를 위해 그래디언트 값들을 저장하고 있다. 이때 저장하고 있는 값들이 매우 많아, 큰 트랜스포머 모델을 사용할때 메모리 부족 현상이 쉽게 나타난다. 이러한 문제를 `RevNet`을 이용해 메모리를 계산 문제로 바꿔서 해결을 시도한다.  
+  
+각각의 피드포워드레이어와 인코더, 디코더 블록의 경우 Residual Network를 사용하는데, 메모리 부족을 reversible block으로 구성된 **reversible residual network (RevNet)**로 해결한다. **RevNet**의 경우 아래와 같이 ResNet을 재구성한다.
+
+![](https://miro.medium.com/max/1400/1*ifCm7OLNDi5liHo87ECEzA.png)
+
+## Reversible Transformer
+리포머는 RevNet의 아이디어를 트랜스포머에 적용했다. 어텐션과 피드포워드 네트워크를 아래와 같이 바꾸었다.  
+$Y_1 = X_1 + Attention(X_2)$   
+$Y_2 = X_2 + FeedForward(Y_1)$
+  
+> 위와 같이 RevNet으로 변경 하면서, 기존에 학습 하면서 사용했던 메모리를 레이어 N개 일때, $1/N$으로 줄이게 되었다.
+
 # Reference
 [Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
