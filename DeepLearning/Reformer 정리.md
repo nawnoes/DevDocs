@@ -93,3 +93,19 @@ $Y_2 = X_2 + FeedForward(Y_1)$
 
 # Reference
 [Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
+
+# 5. Chunking
+> [Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)를 보며 정리.
+## 1. 내용
+![](https://miro.medium.com/max/1400/1*Mi0G7knwLpgRFU8uBDaNlg.png)
+리포머는 피드포워드 레이어의 4K 이상 갈수 있는 고차원 벡터들의 메모리를 줄인다. 피드포워드레이어의 각 부분은 위치와 관계없이 독립적이기 때문에 청크 단위로 잘라서 계산이 가능하다. 따라서 메모리에 올라갈때, 청크 단위로 메모리에 올라가게 되어 메모리 효율을 개선할 수 있다. 
+
+# Reference
+[Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
+
+
+# 6. 실험결과
+리포머 논문의 저자는 두가지 태스트에 대해서 실험을 진행했다. 첫번째 실험은 이미지에 대한 태스크로 `imagenet64` 태스크(입력 길이는 12$k$). 두번째 실험은 텍스트에 대한 태스크로 `enwiki8`(입력 길이는 64$k$) 
+
+# Reference
+[Illustrating the Reformer](https://towardsdatascience.com/illustrating-the-reformer-393575ac6ba0)
