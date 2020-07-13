@@ -88,3 +88,20 @@ class AdContent extends React.Component {
   
   export default FacebookAds.withNativeAd(AdContent);
 ```
+  
+  
+**this.props.nativeAd**
+```json
+this.props.nativeAd: Object {
+  "adTranslation": "광고",
+  "advertiserName": "Facebook Advertiser",
+  "bodyText": "Your ad integration works. Woohoo!",
+  "callToActionText": "Install Now",
+  "headline": "An ad for Facebook",
+  "linkDescription": "Audience Network now supports rewarded video ad format as well. Deliver an immersive in-app ad experience providing users with an incentive in exchange for a completed video view within an interstitial experience.",
+  "promotedTranslation": "홍보됨",
+  "socialContext": "Available on the App Store",
+  "sponsoredTranslation": "Sponsored",
+  "target": 889,
+}
+```
