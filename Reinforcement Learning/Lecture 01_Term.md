@@ -1,0 +1,53 @@
+# 강화학습 
+
+Reward
+Reward Hypothesis
+Agent: 
+Action
+Environment, 환경: Observation과 gkatn
+Observation: 관측 
+
+History: 기록- 관측, 액션, 보상
+State: 상태 - 히스토리에서 가공해서 다음 액션을 하기 위한 정보. 
+
+Agent State: 에이전트가 다음 행동을 결정하는데 사용하는 스테이트
+
+Policy: Agent의 행동
+Value function: 얼마나 상태나 액션이 좋은지를 나타내는것. 미래의 보상을 예측하는 함수. 상태가 얼마나 나쁜지 좋은지를 판단.  
+  
+Model: 에이전트가 예측하는 환경.  환경에 대한 에이전트의 표현. 환경이 다음에 무엇을 할지 예측하는것.
+ - 스테이트 트랜지션를 예측
+ - 리워드를 예측하는것 
+
+## 강화학습의 카테고리
+### Value, Policy으로 분류
+- Value Based : 밸류만 있는것
+    * No Policy
+    * Value Function
+- Policy Based: 폴리시만 있는것
+    * Policy
+    * No Value Function
+- Actor Cric: 폴리시와 밸류 둘다 있는것
+    * Policy
+    * Value Function
+
+
+### Model 기준으로 분류
+- Model Free: 모델이 없이
+    * Policy and/or Value Funtion
+- Model Based: 내부적으로 모델을 추측해서 
+    * Policy and/or Value Funtion
+    * Model
+
+## Learning과 Planning
+- Learning은 환경을 모르면서 액션을 통해 학습하는것. 
+- Planning은 환경을 알면서 
+
+## Exploration과 Exploitation
+
+- Explorartion: 환경에서 새로운 정보를 찾기 위해 탐색
+- Exploitation: 이미 알고있는 정보들을 사용해서 보상을 극대화 하는것.
+
+## Prediction과 Control
+- Prediction: 미래를 평가 하는것. value를 평가하는것. state에 따른 Value를 찾는것. 
+- Control: 미래를 최적하는것. Policy를 찾는 문제  
