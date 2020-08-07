@@ -53,7 +53,8 @@ n=16, $d_h$ = 3인 $n*d_h$ 행렬을 가진 input $X$
 ![](https://raw.githubusercontent.com/patrickvonplaten/scientific_images/master/reformer_benchmark/input.png)
 
 #### chunk 단위로 나눠진 후 input과 self-attention
-
+$l_c$ =4, $n_c$ =4 일때, Chunked attention
+![](https://raw.githubusercontent.com/patrickvonplaten/scientific_images/master/reformer_benchmark/chunked_attention_1.png)
 # References
 - https://huggingface.co/blog/reformer
 - https://github.com/patrickvonplaten/notebooks/blob/master/PyTorch_Reformer.ipynb
