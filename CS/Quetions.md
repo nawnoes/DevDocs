@@ -12,12 +12,18 @@
 - Class, Object, Instance의 차이점이 무엇인가요
 - Overriding과 Overloading의 차이점은?
 - 동기 비동기에 대해 설명하고 각각의 장단점
-
+- 고정소수점과 부동소수점
+    + 고정 소수점은 부호/ 정수부/ 소수부 표현되며, 표현 범위가 적음
+    + 부동 소수점은 부호/ 지수부/ 가수부로 표현되며 수의 표현 범위가 넓음. 그러나 오차 발생가능. 
 ## OS
 
 ## Data Structure & Algorithm
 - Quick sort/ Bubble sort 설명과 구현
+: 퀵정렬의 경우 기술면접에서 빈번하게 나오므로 아는 것 필요.
+    + python 퀵정렬
+    + 파이썬 버블정렬
 - 자료구조 스택, 트리, 큐, 힙에 대해 설명
+
 
 ## Network
 - 네트워크에서 OSI 7 Layer에 대해 설명
