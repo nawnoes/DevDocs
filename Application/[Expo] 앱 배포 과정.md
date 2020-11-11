@@ -71,6 +71,12 @@ expo build:android
 https://expo.io/artifacts/e3715a94-5313-432d-917b-bdb2d5848e4c
 하지만 IPA 앱이 빌드 된다고 해서 앱이 그대로 설치 되지 않는다. 
 ### TestFlight
+#### 기존 Application Loader를 이용한 방법
+1. https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app 에서 나의 앱 화면에서 앱추가를 선택.
+2. 신규 앱 등록창 정보들을 입력
+3. 하지만 Xcode 11 버전 이후 Application Loader 지원이 되지 않는다.
+
+#### Expo-CLI를 이용한 방법
 # Reference
 - https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%EC%9C%BC%EB%A1%9C-%EC%95%B1%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-d1c9af5c8802
 
