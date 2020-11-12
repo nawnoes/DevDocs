@@ -77,6 +77,11 @@ https://expo.io/artifacts/e3715a94-5313-432d-917b-bdb2d5848e4c
 3. 하지만 Xcode 11 버전 이후 Application Loader 지원이 되지 않는다.
 
 #### Expo-CLI를 이용한 방법
+#### 1. cli를 이용한 방법
+```
+xcrun altool --upload-app --type ios --file ipa파일 --username 아이디 --password 패스워드
+```
+
 # Reference
 - https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%EC%9C%BC%EB%A1%9C-%EC%95%B1%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-d1c9af5c8802
 
