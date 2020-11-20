@@ -78,10 +78,16 @@ https://expo.io/artifacts/e3715a94-5313-432d-917b-bdb2d5848e4c
 
 #### Expo-CLI를 이용한 방법
 #### 1. cli를 이용한 방법
-```
-xcrun altool --upload-app --type ios --file ipa파일 --username 아이디 --password 패스워드
-```
+expo upload:ios를 사용해 
 
+#### 2. Manually uploading your app
+0. expo build:ios로 빌
+1. Transporter 다운로드. Transporter는 기존에 Application Loader와 동일하다.
+2. Transporter 로그인
+3. expo로 다운 받은 ipa 파일을 Drag & Drop 
+4. '전송' 버튼 클릭 후 앱 업로드 대기
+
+#### 전송 완료 후 
 # Reference
 - https://medium.com/encored-technologies-engineering-data-science/expo-react-native-create-app-%EC%9C%BC%EB%A1%9C-%EC%95%B1%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-d1c9af5c8802
 
