@@ -4,7 +4,7 @@ Transformer, Reformer 각각 MLM Pretraining 후 KorQuaD 1.0 테스트
 |:-------------------------|-------------|---------|
 |         KoBERT(Base)     |    52.81    |  80.27  |
 |**Transformer-mlm-small** |  **56.47**  |**83.04**|
-|   Reformer-mlm-small     |    52.1     |  79.02  |
+| **Reformer-mlm-small**   |  **52.1**   |**79.02**|
 
 
 ## ELECTRA KorQuaD Finetuning
@@ -14,7 +14,7 @@ Transformer, Reformer 각각 ELECTRA Pretraining 후 KorQuaD 1.0 테스트
 |           KoBERT(Base)      |    52.81    |  80.27  |
 |      KoELECTRA-Small-v3     |    82.11    |  91.13  |
 |**Transformer-electra-small**|  **55.83**  |**82.02**|
-|    Reformer-electra-small   |    52.04    |  78.53  |
+|  **Reformer-electra-small** |  **52.04**  |**78.53**|
 
 ## Reformer GPT Text Generation
 파인튜닝 없이 사전학습된 언어모델만으로 텍스트 생성 테스트. Top-P Sampling 사용.
