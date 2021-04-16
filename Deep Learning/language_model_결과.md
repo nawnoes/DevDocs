@@ -17,8 +17,8 @@ Transformer, Reformer 각각 ELECTRA Pretraining 후 KorQuaD 1.0 테스트
 |  **Reformer-electra-small** |  **52.04**  |**78.53**|
 
 ## Reformer GPT Text Generation
-파인튜닝 없이 사전학습된 언어모델만으로 텍스트 생성 테스트. Top-P Sampling 사용.
-
+사전학습된 언어모델만으로 텍스트 생성 테스트. Top-P Sampling 사용.
+- `사람이 철학적으로 생각하는 것은` 입력.
 ```
 사람이 철학적으로 생각하는 것은 그들에게 도움이 되겠음을 말해주고 있기 때문이다. 
 예를 들었을 수도 있다면 ( 그 사람이 내재해 있기 ), 그 사람이 그 사람을 신에게 말하는 것이었다고 생각할 때 그것은 바로 신에 의해 선택되고 있다.
